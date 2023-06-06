@@ -43,15 +43,89 @@ console.log('array of employee data: ',  employees );
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
+let employeesCalculatedBonus = [];
 
+
+function employeeForBonus (employeesArray) {
+  let newObjectArray = [];
+  for (let employee of employeesArray) {
+    // Test for accessing individual employee info
+    // console.log('name:', employee.name);
+    // console.log('employeeNumber', employee.employeeNumber);
+    // console.log('employeeNumber length', employee.employeeNumber.length);
+    // console.log('employeeSalaray', employee.annualSalary);
+    // console.log('employeeRating', employee.reviewRating);
+    calculateIndividualEmployeeBonus(employee);
+
+    // push to newObjectArray
+  }
+  // return newObjectArray
+
+}
+
+
+
+// percentage calc salay * (13/100) 
 
 
 // This function will calculate 1 employee's bonus!
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
+  let bounusCalculated = 0;
+  // Checking ratings and years of serivce 
+  if (employee.reviewRating <= 2) {
+    return bounusCalculated;
+  } 
+  else if (employee.employeeNumber.length === 4) {
+    bounusCalculated += 5;
+    if (employee.reviewRating === 3) {
+      bounusCalculated += 4;
+    } else if (employee.reviewRating === 4) {
+      bounusCalculated += 6;
+    } else if (employee.reviewRating === 5) {
+      bounusCalculated += 10;
+    }
+  } // end check for 15+ years
+  else if (employee.reviewRating === 3) {
+    bounusCalculated += 4;
+  } else if (employee.reviewRating === 4) {
+    bounusCalculated += 6;
+  } else if (employee.reviewRating === 5) {
+    bounusCalculated += 10;
+  } // end check if employee not there for 15years
   
+  return bounusCalculated
+  // checking salary 
   
-  // return new object with bonus results
-
+    
 }
+console.log(calculateIndividualEmployeeBonus(employees[0])); // # should be 9 for Attacis 
+  // return new object with bonus results
+  
+
+/*
+INPUT
+- employee object
+
+OUTPUT
+- new bounusCalculated object 
+OR 
+- percent# / 100 
+// example 13 would be .13
+
+
+* Check employee rating
+  * If its 2 or below
+    * no bonus
+  * else
+    * 
+
+
+
+*/
+
+
+
+// TESTS!!
+// employeeForBonus(employees);
