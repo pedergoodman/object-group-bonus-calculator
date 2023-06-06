@@ -76,6 +76,7 @@ function calculateIndividualEmployeeBonus( employee ) {
   // Checking ratings and years of serivce 
   if (employee.reviewRating <= 2) {
     return bounusCalculated;
+    
   } 
   else if (employee.employeeNumber.length === 4) {
     bounusCalculated += 5;
