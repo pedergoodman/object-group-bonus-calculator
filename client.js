@@ -95,12 +95,15 @@ function calculateIndividualEmployeeBonus( employee ) {
     bounusCalculated += 10;
   } // end check if employee not there for 15years
   
-  return bounusCalculated
   // checking salary 
-  
-    
+  if (Number(employee.annualSalary) > 65000) {
+    bounusCalculated--
+  }
+
+
+  return bounusCalculated
 }
-console.log(calculateIndividualEmployeeBonus(employees[0])); // # should be 9 for Attacis 
+console.log(calculateIndividualEmployeeBonus(employees[3])); // # should be 14
   // return new object with bonus results
   
 
