@@ -47,10 +47,11 @@ let employeesCalculatedBonus = [];
 
 
 function employeeForBonus (employeesArray) {
-  let newObjectArray = [];
+  // let newObjectArray = [];
   for (let employee of employeesArray) {
+  
     // Test for accessing individual employee info
-    // console.log('name:', employee.name);
+    console.log(employee.name);
     // console.log('employeeNumber', employee.employeeNumber);
     // console.log('employeeNumber length', employee.employeeNumber.length);
     // console.log('employeeSalaray', employee.annualSalary);
@@ -72,39 +73,60 @@ function employeeForBonus (employeesArray) {
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
-  let bounusCalculated = 0;
+
+  let bonusPercentage = 0;
   // Checking ratings and years of serivce 
   if (employee.reviewRating <= 2) {
-    return bounusCalculated;
-    
+    console.log('Employee Rating 2 & below');
+    bonusPercentage = 0;
+  } // end low rating check
+
+  // check years of service
+  if (employee.employeeNumber.length === 4) {
+    bonusPercentage += 5;
+  } // end check for 15 years
+
+  // Check employee rating above 2
+  if (employee.reviewRating === 3) {
+    bonusPercentage += 4;
   } 
-  else if (employee.employeeNumber.length === 4) {
-    bounusCalculated += 5;
-    if (employee.reviewRating === 3) {
-      bounusCalculated += 4;
-    } else if (employee.reviewRating === 4) {
-      bounusCalculated += 6;
-    } else if (employee.reviewRating === 5) {
-      bounusCalculated += 10;
-    }
-  } // end check for 15+ years
-  else if (employee.reviewRating === 3) {
-    bounusCalculated += 4;
-  } else if (employee.reviewRating === 4) {
-    bounusCalculated += 6;
-  } else if (employee.reviewRating === 5) {
-    bounusCalculated += 10;
-  } // end check if employee not there for 15years
+  else if (employee.reviewRating === 4) {
+    bonusPercentage += 6;
+  } 
+  else if (employee.reviewRating === 5) {
+    bonusPercentage += 10;
+  } // end check ratings above 2
+  
   
   // checking salary 
   if (Number(employee.annualSalary) > 65000) {
-    bounusCalculated--
+    bonusPercentage--
+  }
+  // checking if above 13 or below 0
+  if (bonusPercentage < 0) {
+    bonusPercentage = 0
+  }
+  if (bonusPercentage > 13) {
+    bonusPercentage = 13
   }
 
+  let decimialBonusPercentage = bonusPercentage; 
 
-  return bounusCalculated
+  let result = {
+    name: employee.name,
+    bonusPercentage: bonusPercentage,
+    totalCompensation: 'total comp',
+    totalBonus: 'bonue' 
+  }
+
+  console.log(result);
+  return result
 }
-console.log(calculateIndividualEmployeeBonus(employees[3])); // # should be 14
+
+employeeForBonus(employees)
+
+
+// console.log(calculateIndividualEmployeeBonus(employees[3])); // # should be 14
   // return new object with bonus results
   
 
